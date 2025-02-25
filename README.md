@@ -59,7 +59,7 @@ Eleventy를 사용한 고객지원 FAQ 웹사이트 입니다. 아래의 가이�
     
 3. **Eleventy 실행**
     
-    Eleventy는 로컬 서버에서 정적 사이트를 미리보기할 수 있도록 도와줍니다. 아래 명령어로 Eleventy를 실행하세요.
+   아래 명령어를 사용하면 로컬 서버에서 정적 사이트를 미리 볼 수 있습니다.
     
     ```bash
     yarn exec eleventy -- --serve
