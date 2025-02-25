@@ -6,7 +6,6 @@
   "author": "Jiwon Kwak",
   "license": "MIT",
   "scripts": {
-    "yarn snap": "yarn exec eleventy -- --serve",
     "baddie": "npx @tailwindcss/cli -i ./static/style.css -o ./style.css"
   },
   "dependencies": {
