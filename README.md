@@ -18,10 +18,21 @@ Eleventy를 사용한 고객지원 FAQ 웹사이트 입니다. 아래의 가이�
     cd faq_page
     ```
     
-## 2. 의존성 설치
+2. **Yarn 설치**
 
-1. **Yarn 설치**
+    macOS에서는 Homebrew를 사용해서 설치할 수 있습니다.
+   
+    ```bash
+    brew install yarn
+    ```
+    Node.js를 설치하셨다면 npm을 사용해도 됩니다.
+
+    ```bash
+    npm install -g yarn
+    ```
     
+4. **의존성**
+       
     프로젝트 루트에서 아래 명령어를 실행하여 의존성을 설치합니다.
     
     ```bash
