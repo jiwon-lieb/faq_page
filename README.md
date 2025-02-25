@@ -62,7 +62,7 @@ Eleventy를 사용한 고객지원 FAQ 웹사이트 입니다. 아래의 가이�
     Eleventy는 로컬 서버에서 정적 사이트를 미리보기할 수 있도록 도와줍니다. 아래 명령어로 Eleventy를 실행하세요.
     
     ```bash
-    yarn snap
+    yarn exec eleventy -- --serve
     ```
     
     - 기본적으로 빌드된 결과는 `_site` 폴더에 생성됩니다.
