@@ -19,12 +19,12 @@
     }
 
     .faq-container {
+      display: flex;
       width: 100%;
-      max-width: 750px;
-      margin-top: 80px;
-      padding: 0 15px;
-      flex-grow: 1;
+      max-width: 900px; /* Slightly wider for better space usage */
       margin: 80px auto;
+      padding: 0 15px;
+      gap: 20px; /* Space between columns */
     }
 
     .faq-header {
@@ -34,19 +34,27 @@
       margin-bottom: 15px;
     }
 
+    .faq-categories {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 200px; /* Keeps category width consistent */
+    }
+
     /* Category box with outline and padding */
     .faq-category {
-      text-align: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: bold;
-      padding: 12px;
-      border: 2px solid #808A96; /* Outlined with a neutral gray */
-      background: #3B434B; /* Light gray background */
+      padding: 10px 15px;
+      border: 2px solid #808A96;
+      background: #3B434B;
       color: #EFF2F5;
       cursor: pointer;
       transition: background 0.3s ease, border-color 0.3s ease;
-      border-radius: 8px; /* Slightly rounded edges for a clean look */
-      margin-bottom: 0px; /* Space between categories */
+      border-radius: 8px;
+      text-align: left;
+      white-space: nowrap; /* Prevents text from breaking */
     }
 
     /* Hover effect: Darker outline and background color */
@@ -56,15 +64,24 @@
       color: #1B1F23; /* Slightly darker text for contrast */
     }
 
+    .faq-content {
+      flex: 3; /* Takes up more space */
+      display: none; /* Hidden by default */
+      flex-direction: column;
+      gap: 10px;
+      border-left: 2px solid #808A96; /* Visual separation */
+      padding-left: 20px;
+    }
 
-    .faq-list {
+
+   /* .faq-list {
       display: none;
       flex-direction: column;
       gap: 10px;
       padding-left: 5px;
-      border-top: none; /* Removes extra border between category and FAQs */
-      border-radius: 0 0 8px 8px; /* Rounded only at the bottom */
-      padding-bottom: 10px; /* Adds slight padding for visual comfort */
+      border-top: none; 
+      border-radius: 0 0 8px 8px;
+      padding-bottom: 10px;
     }
 
     .faq-item {
@@ -75,11 +92,17 @@
       transition: 0.3s ease;
     }
 
-    /* Space between last answer and next category */
+    /* Space between last answer and next category
     .faq-item:last-child {
-      margin-bottom: 20px; /* Ensures space before next category */
+      margin-bottom: 20px; /* Ensures space before next category
+    } */
+
+    .faq-category.active {
+      background: #D9E4ED;
+      border-color: #3B434B;
     }
 
+/* Question styling */ 
     .faq-question {
       font-size: 1rem;
       font-weight: 600;
@@ -141,11 +164,17 @@
 
   <!-- FAQ Container -->
   <div class="faq-container">
-    <h1 class="faq-header">자주 묻는 질문</h1>
-    <div id="faq-list">
-      <p class="text-center text-gray-500">FAQ를 불러오는 중...</p>
+    <!-- Left column: Category List -->
+    <div class="faq-categories" id="faq-categories">
+      <p class="text-gray-500 text-sm">📄 카테고리를 선택하세요</p>
+    </div>
+  
+    <!-- Right column: FAQ Content (Initially empty, dynamically populated) -->
+    <div class="faq-content" id="faq-content">
+      <p class="text-gray-500 text-sm">🔍 카테고리를 선택하면 FAQ가 표시됩니다.</p>
     </div>
   </div>
+  
 
   <!-- Fixed Footer -->
   <footer class="fixed bottom-0 left-0 w-full text-center text-white p-4">
@@ -173,73 +202,93 @@
 
   <script>
     async function loadFAQs() {
-      try {
-        const response = await fetch("/faq.json");
-        if (!response.ok) throw new Error("Failed to load faq.json");
+    try {
+      const response = await fetch("/faq.json");
+      if (!response.ok) throw new Error("Failed to load faq.json");
 
-        const categories = await response.json();
-        const faqContainer = document.getElementById("faq-list");
-        faqContainer.innerHTML = "";
+      const categories = await response.json();
+      const categoryContainer = document.getElementById("faq-categories");
+      const faqContentContainer = document.getElementById("faq-content");
 
-        if (categories.length === 0) {
-          faqContainer.innerHTML = "<p class='text-center text-gray-500'>등록된 FAQ가 없습니다.</p>";
-          return;
+      categoryContainer.innerHTML = ""; // Clear previous categories
+      faqContentContainer.innerHTML = `<p class="text-gray-500 text-sm">🔍 카테고리를 선택하면 FAQ가 표시됩니다.</p>`; // Default message
+
+      if (categories.length === 0) {
+        categoryContainer.innerHTML = "<p class='text-gray-500'>등록된 FAQ가 없습니다.</p>";
+        return;
+      }
+
+      categories.forEach((category, index) => {
+        // Create category button
+        const categoryDiv = document.createElement("div");
+        categoryDiv.classList.add("faq-category");
+        categoryDiv.innerText = category.category;
+        categoryDiv.onclick = () => showFAQ(category.category, category.faqs);
+        categoryContainer.appendChild(categoryDiv);
+
+        // Load the first category by default
+        if (index === 0) {
+          categoryDiv.classList.add("active");
+          showFAQ(category.category, category.faqs);
         }
-
-        categories.forEach(category => {
-          // Create category header
-          const categoryDiv = document.createElement("div");
-          categoryDiv.classList.add("faq-category");
-          categoryDiv.innerText = category.category;
-          categoryDiv.onclick = () => toggleCategory(categoryDiv);
-
-          // Create collapsible FAQ list
-          const faqList = document.createElement("div");
-          faqList.classList.add("faq-list");
-
-          category.faqs.forEach(faq => {
-            const faqItem = document.createElement("div");
-            faqItem.classList.add("faq-item");
-
-            faqItem.innerHTML = `
-              <div class="faq-question" onclick="toggleFaq(this)">
-                <span>${faq.title}</span>
-                <button class="toggle-btn text-xl">+</button>
-              </div>
-              <div class="faq-answer">${faq.body}</div>
-            `;
-
-            faqList.appendChild(faqItem);
-          });
-
-          faqContainer.appendChild(categoryDiv);
-          faqContainer.appendChild(faqList);
-        });
-      } catch (error) {
-        console.error("Error loading FAQs:", error);
-        document.getElementById("faq-list").innerHTML = 
-          "<p class='text-center text-red-500'>FAQ를 불러오는 중 오류가 발생했습니다.</p>";
-      }
+      });
+    } catch (error) {
+      console.error("Error loading FAQs:", error);
+      document.getElementById("faq-categories").innerHTML =
+        "<p class='text-red-500'>FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>";
     }
+  }
 
-    function toggleCategory(categoryElement) {
-      const faqList = categoryElement.nextElementSibling;
-      faqList.style.display = faqList.style.display === "block" ? "none" : "block";
+  function showFAQ(categoryName, faqs) {
+    const faqContentContainer = document.getElementById("faq-content");
+
+    // Clear old FAQ content
+    faqContentContainer.innerHTML = "";
+    faqContentContainer.style.display = "flex"; // Make visible
+
+    // Remove active class from all categories
+    document.querySelectorAll(".faq-category").forEach(cat => {
+      cat.classList.remove("active");
+    });
+
+    // Add active class to clicked category
+    document.querySelectorAll(".faq-category").forEach(cat => {
+      if (cat.innerText === categoryName) cat.classList.add("active");
+    });
+
+    // Populate FAQs
+    faqs.forEach(faq => {
+      const faqItem = document.createElement("div");
+      faqItem.classList.add("faq-item");
+
+      faqItem.innerHTML = `
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>${faq.title}</span>
+          <button class="toggle-btn text-xl">+</button>
+        </div>
+        <div class="faq-answer">${faq.body}</div>
+      `;
+
+      faqContentContainer.appendChild(faqItem);
+    });
+  }
+
+  function toggleFaq(questionElement) {
+    const answerElement = questionElement.nextElementSibling;
+    const toggleButton = questionElement.querySelector(".toggle-btn");
+
+    if (answerElement.style.display === "block") {
+      answerElement.style.display = "none";
+      toggleButton.innerText = "+";
+    } else {
+      answerElement.style.display = "block";
+      toggleButton.innerText = "−";
     }
+  }
 
-    function toggleFaq(questionElement) {
-      const answerElement = questionElement.nextElementSibling;
-      const toggleButton = questionElement.querySelector(".toggle-btn");
-      if (answerElement.style.display === "block") {
-        answerElement.style.display = "none";
-        toggleButton.innerText = "+";
-      } else {
-        answerElement.style.display = "block";
-        toggleButton.innerText = "−";
-      }
-    }
+// Load FAQs on page load
+window.onload = loadFAQs;
 
-    window.onload = loadFAQs;
   </script>
 
 </body>
