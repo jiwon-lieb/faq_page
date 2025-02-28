@@ -1,5 +1,8 @@
 ---
 title: "RBLN SDK를 어떻게 사용하나요?"
+slug: "how-to-use-rbln-sdk"            
+category: "RBLN SDK"                    
+tags: ["installation", "setup"]         
 ---
 RBLN SDK를 사용하기 위해서는 RBLN 드라이버(driver), 컴파일러(compiler), 모델주(Model Zoo)의 적절한 버전을 설치해야 합니다.
 
