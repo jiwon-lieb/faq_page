@@ -11,18 +11,11 @@
     body {
       font-family: 'Pretendard', sans-serif;
       background-color: #EFF2F5;
-      color: #3B434B;
-      margin: 0;
-      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-    }
-
-    /* Ensure line breaks in answer text */
-    .answer-body {
-      white-space: pre-line;
+      padding: 20px;
     }
 
     .faq-list {
@@ -73,13 +66,13 @@
 
     /* Answer container: hidden by default, with proper padding and restricted width */
     .faq-answer {
+      white-space: pre-line;
       display: none;
       padding: 16px;
       font-size: 1rem;
       line-height: 1.5;
       border-top: 1px solid #E2EBF2;
-      /* Optional: restrict horizontal width and center text if desired */
-      max-width: 100%;  /* or e.g., max-width: 600px; margin: 0 auto; */
+      max-width: 100%;
     }
 
     .faq-header {
@@ -184,7 +177,7 @@
               <span>${faq.title}</span>
               <button class="toggle-btn text-xl">+</button>
             </div>
-            <div class="faq-answer answer-body">${faq.body}</div>
+            <div class="faq-answer">${faq.body}</div>
           </div>
         `).join("");
 
