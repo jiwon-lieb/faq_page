@@ -142,8 +142,14 @@
 
     async function searchFAQs() {
     const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get("query")?.trim().toLowerCase() || "";
+    const query = urlParams.get("query")?.trim() || "";
     const resultsContainer = document.getElementById("results");
+    const searchTitle = document.querySelector(".search-title");
+
+    // Update search title to display "query word" 검색 결과
+    if (query) {
+      searchTitle.innerHTML = `🔍 "<span class="text-500">${query}</span>" 검색 결과`;
+    }
 
     // If the search query is empty, show a message
     if (!query) {
@@ -159,13 +165,13 @@
 
       // Filter FAQs by title or body containing the search query
       const filtered = faqs.filter(faq =>
-        faq.title.toLowerCase().includes(query) ||
-        faq.body.toLowerCase().includes(query)
+        faq.title.toLowerCase().includes(query.toLowerCase()) ||
+        faq.body.toLowerCase().includes(query.toLowerCase())
       );
 
       // If no results found, display the searched query
       if (filtered.length === 0) {
-        resultsContainer.innerHTML = `<p class='no-results'>❌ "${query}" 검색 결과가 없습니다.</p>`;
+        resultsContainer.innerHTML = `<p class='no-results'>❌ "<span class="text-red-500">${query}</span>" 검색 결과가 없습니다.</p>`;
         return;
       }
 
@@ -188,6 +194,6 @@
   }
 
   searchFAQs();
-  </script>
+</script>
 </body>
 </html>
