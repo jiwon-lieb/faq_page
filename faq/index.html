@@ -34,25 +34,37 @@
       margin-bottom: 15px;
     }
 
+    /* Category box with outline and padding */
     .faq-category {
-      font-size: 1.3rem;
+      text-align: center;
+      font-size: 1.2rem;
       font-weight: bold;
       padding: 12px;
-      border-bottom: 2px solid #808A96;
-      color: #3B434B;
+      border: 2px solid #808A96; /* Outlined with a neutral gray */
+      background: #3B434B; /* Light gray background */
+      color: #EFF2F5;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      border-radius: 8px; /* Slightly rounded edges for a clean look */
+      margin-bottom: 0px; /* Space between categories */
     }
 
+    /* Hover effect: Darker outline and background color */
     .faq-category:hover {
-      background: #E2EBF2;
+      background: #E2EBF2; /* Slightly darker gray-blue */
+      border-color: #3B434B; /* Darker border for emphasis */
+      color: #1B1F23; /* Slightly darker text for contrast */
     }
+
 
     .faq-list {
       display: none;
       flex-direction: column;
       gap: 10px;
       padding-left: 5px;
+      border-top: none; /* Removes extra border between category and FAQs */
+      border-radius: 0 0 8px 8px; /* Rounded only at the bottom */
+      padding-bottom: 10px; /* Adds slight padding for visual comfort */
     }
 
     .faq-item {
@@ -61,6 +73,11 @@
       box-shadow: 0 2px 8px rgba(59, 67, 75, 0.12);
       border-left: 4px solid #808A96;
       transition: 0.3s ease;
+    }
+
+    /* Space between last answer and next category */
+    .faq-item:last-child {
+      margin-bottom: 20px; /* Ensures space before next category */
     }
 
     .faq-question {
@@ -100,13 +117,6 @@
       color: white;
       padding: 15px 0;
       margin-top: auto;
-    }
-
-    footer div {
-      display: flex;
-      justify-content: center;
-      gap: 20px; /* Even spacing between links */
-      flex-wrap: wrap; /* Wrap links if the screen is too small */
     }
 
     footer a {
