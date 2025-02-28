@@ -10,25 +10,46 @@
 
     body {
       font-family: 'Pretendard', sans-serif;
-      background-color: #EFF2F5;
+      background: url('/assets/background.jpeg') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
       flex-direction: column;
+      align-items: stretch;
       align-items: center;
       min-height: 100vh;
-      padding: 10px;
+      padding: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    /* FAQ Page Title */
+    .faq-page-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white; /* White font */
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Adds readability */
     }
 
 
     .faq-container {
       display: flex;
+      flex-direction: row;
       width: 100%;
       max-width: 1000px; /* Increased width for better layout */
-      margin-top: 100px; /* Moved down */
+      margin-top: 0px;
+      margin-bottom: 100px;
       padding: 20px;
       background: white;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(59, 67, 75, 0.1);
-      min-height: 500px;
+      min-height: 650px;
       overflow: hidden;
     }
 
@@ -98,7 +119,7 @@
       border-left: 2px solid #808A96; /* Visual separation */
       padding-left: 20px;
       overflow-y: auto;
-      max-height: 500px;
+      max-height: 550px;
     }
     
 
@@ -148,17 +169,23 @@
 
     header {
       position: absolute;
-      top: 5px;
+      top: 4px;
       left: 15px;
     }
 
     footer {
-      width: 100%;
+      width: 100vw;
+      max-width: 100%;
       text-align: center;
       background: #3B434B;
       color: white;
       padding: 15px 0;
-      margin-top: auto;
+      margin-top: 100px;
+      margin-left: 0;
+      margin-bottom: 0;
+      box-sizing: 0;
+      position: relative;
+      bottom: 0;
     }
 
     footer a {
@@ -177,26 +204,26 @@
   <!-- Fixed Logo -->
   <header class="absolute top-6 left-12">
     <a href="/">
-      <img src="/assets/logo.png" alt="Rebellions Logo" class="h-6">
+      <img src="/assets/logo_white.png" alt="Rebellions Logo" class="h-7">
     </a>
   </header>
+
+  <h1 class="faq-page-title">자주 묻는 질문</h1>
 
   <!-- FAQ Container -->
   <div class="faq-container">
     <!-- Left column: Category List -->
     <div class="faq-categories" id="faq-categories">
-      <p class="text-gray-500 text-sm">📄 카테고리를 선택하세요</p>
     </div>
   
     <!-- Right column: FAQ Content (Initially empty, dynamically populated) -->
     <div class="faq-content" id="faq-content">
-      <p class="text-gray-500 text-sm">🔍 카테고리를 선택하면 FAQ가 표시됩니다.</p>
     </div>
   </div>
   
 
   <!-- Fixed Footer -->
-  <footer class="fixed bottom-0 left-0 w-full text-center text-white p-4">
+  <footer class="left-0 w-full text-center text-white p-4">
     <p class="text-sm">
       📍 <a href="https://maps.app.goo.gl/dEBLsvBE2L9BrmWEA" target="_blank" class="underline">
         경기도 성남시 분당구 정자동 9번지 102동 801호
