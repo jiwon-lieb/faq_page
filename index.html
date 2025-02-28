@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>무엇을 도와드릴까요? | 고객지원</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="//unpkg.com/alpinejs" defer></script>
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
@@ -19,7 +19,8 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      position: relative; /* ensures absolute/fixed children are relative to body */
+      position: relative;
+      /* ensures absolute/fixed children are relative to body */
     }
 
     .btn {
@@ -36,7 +37,7 @@
 
     .btn-primary {
       background: #BBC4CF;
-      color: 3B434B;
+      color: 808A96;
     }
 
     .btn-primary:hover {
@@ -92,48 +93,138 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Navbars -->
   <header class="absolute top-6 left-12">
     <a href="/">
-    <img src="/assets/logo_white.png" alt="White Logo" class="h-6">
+      <img src="/assets/logo_white.png" alt="White Logo" class="h-6">
     </a>
   </header>
 
   <!-- Main Card (Balanced within screen height) -->
-  <div class="flex flex-col items-center justify-center text-center p-10 bg-white shadow-xl rounded-2xl border border-[#E2EBF2] max-w-xl w-full relative -mt-40">
-    
+  <div
+    class="flex flex-col items-center justify-center text-center p-10 bg-white shadow-xl rounded-2xl border border-[#E2EBF2] max-w-xl w-full relative -mt-40">
+
     <!-- Secondary Logo Above Title -->
-    <img src="/assets/logo.png" alt="Black Logo" class="h-6 mb-4"> 
+    <img src="/assets/logo.png" alt="Black Logo" class="h-6 mb-4">
 
     <!-- Title -->
     <h1 class="text-4xl font-extrabold text-[#3B434B] mb-6 mt-4">
       무엇을 도와드릴까요?
     </h1>
 
+    <script>
+      //     async function performSearch() { 
+      //   const query = this.searchQuery.trim().toLowerCase();
+      //   this.searchResults = ''; // Reset previous messages
+
+      // if (!query) {
+      //     this.searchResults = `<p class='text-red-500 mt-2'>⚠️ 검색어를 입력해주세요.</p>`;
+      //     return;
+      // }
+      //   try {
+      //       // Fetch FAQ data
+      // const response = await fetch('/faq.json');
+      // if (!response.ok) throw new Error('Failed to load FAQ data');
+
+      // const faqs = await response.json();
+      // const matches = faqs.filter(faq => 
+      //     faq.title.toLowerCase().includes(query) || 
+      //     faq.body.toLowerCase().includes(query)
+      // );
+
+      //       // If no results found, show message under the button
+      //       if (matches.length === 0) {
+      //           this.searchResults = `<p class='text-gray-500 mt-3'>❌ ${query} 검색 결과를 찾을 수 없습니다.</p>`;
+      //       } 
+      //       else {
+      //           // ✅ Ensure Redirection on Match
+      //           window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+      //       }
+      //   } catch (error) {
+      // console.error('Error fetching FAQs:', error);
+      // this.searchResults = `<p class='text-red-500 mt-3'>❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>`;
+      // }
+      // }
+
+      // async function performSearch() {
+        // const query = this.searchQuery.trim().toLowerCase();
+        // this.searchResults = ''; // Reset previous messages
+        // if (!query) {
+        //   this.searchResults = `<p class='text-red-500 mt-2'>⚠️ 검색어를 입력해주세요.</p>`;
+        //   return;
+        // }
+
+        // try {
+        //   const response = await fetch('/faq.json');
+        //   const faqs = await response.json();
+        //   const matches = faqs.filter(faq =>
+        //     faq.title.toLowerCase().includes(query) ||
+        //     faq.body.toLowerCase().includes(query)
+        //   );
+
+        //   console.log(matches);
+
+        // } catch (error) {
+        //   console.error('Error fetching FAQs:', error);
+        //   this.searchResults = `<p class='text-red-500 mt-3'>❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>`;
+        // }
+      // }
+    </script>
+
     <!-- Search Bar -->
     <form x-data="{ 
-      searchQuery: '', 
-      performSearch() { 
-          const query = this.searchQuery.trim();
-          if (query.length > 0) {
-              window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+        searchQuery: '', 
+        searchResults: '',
+        async performSearch() {
+          const query = this.searchQuery.trim().toLowerCase();
+          this.searchResults = ''; // Reset previous messages
+          if (!query) {
+            this.searchResults = '⚠️ 검색어를 입력해주세요.';
+            return;
           }
-      }
-  }"  x-on:submit.prevent="performSearch" class="w-full max-w-lg text-center">
-        <input autocomplete="off" x-model="searchQuery" type="text" id="searchQuery" placeholder="검색어를 입력하세요" class="search-bar mb-3">
-        <button 
-    type="submit" 
-    x-bind:disabled="searchQuery.length <= 1"
-    x-bind:class="searchQuery.length > 0 
-        ? 'bg-[#3B434B] text-[#EFF2F5] hover:bg-[#EFF2F5] hover:text-[#23292F] transition-all' 
-        : 'bg-[#3B434B] text-gray-400 cursor-not-allowed'"
-    class="btn mb-6 mx-auto px-6 py-3 rounded-full shadow-md font-semibold text-lg transition-all">
-    🔍 검색
-        </button>
+  
+          try {
+            const response = await fetch('/faq.json');
+            const faqs = await response.json();
+            const matches = faqs.filter(faq =>
+              faq.title.toLowerCase().includes(query) ||
+              faq.body.toLowerCase().includes(query)
+            );
+  
+            if (matches.length === 0) {
+              this.searchResults = `❌ ${this.searchQuery} 검색 결과를 찾을 수 없습니다.`;
+            } else {
+              window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+            }
+  
+          } catch (error) {
+            console.error('Error fetching FAQs:', error);
+            this.searchResults = `❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.`;
+          }
+        }
 
-    </form>    
+      }" x-on:submit.prevent="await performSearch" class="w-full max-w-lg text-center">
+
+      <!-- Search Input -->
+      <input autocomplete="off" x-model="searchQuery" type="text" id="searchQuery" placeholder="검색어를 입력하세요"
+        class="search-bar mb-3">
+
+      <!-- Search Button -->
+      <button @click="performSearch" type="submit" x-bind:disabled="searchQuery.length === 0" x-bind:class="searchQuery.length > 0 
+              ? 'bg-[#3B434B] text-[#EFF2F5] hover:bg-[#EFF2F5] hover:text-[#23292F] transition-all' 
+              : 'bg-[#3B434B] text-gray-400 cursor-not-allowed'"
+        class="btn mb-3 mx-auto px-6 py-3 rounded-full shadow-md font-semibold text-lg transition-all">
+        🔍 검색
+      </button>
+
+      <!-- Search Results Message (Appears Below Button Without Reloading) -->
+      <div class="mt-3 text-center text-lg text-gray-500"><p x-html="searchResults"></p></div>
+
+    </form>
+
 
     <!-- Subtitle -->
     <p class="text-lg text-[#808A96] mb-6">
@@ -164,7 +255,8 @@
     </p>
     <div class="mt-2 flex justify-center space-x-6 items-center">
       <a href="https://rebellions.ai" target="_blank" class="hover:text-gray-300">Website</a>
-      <a href="https://www.linkedin.com/company/rebellions-ai" target="_blank" class="hover:text-gray-300 flex items-center space-x-1">
+      <a href="https://www.linkedin.com/company/rebellions-ai" target="_blank"
+        class="hover:text-gray-300 flex items-center space-x-1">
         <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/linkedin.svg" alt="LinkedIn" class="h-5 w-5">
         <span>LinkedIn</span>
       </a>
@@ -174,6 +266,7 @@
       </a>
     </div>
   </footer>
-
+  <script src="//unpkg.com/alpinejs" defer></script>
 </body>
+
 </html>
