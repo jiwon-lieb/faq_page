@@ -147,61 +147,74 @@
         toggleButton.innerText = "−";
       }
     }
-
+  
     async function searchFAQs() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get("query")?.trim() || "";
-    const resultsContainer = document.getElementById("results");
-    const searchTitle = document.querySelector(".search-title");
-
-    // Update search title to display "query word" 검색 결과
-    if (query) {
-      searchTitle.innerHTML = `🔍 "<span class="text-500">${query}</span>" 검색 결과`;
-    }
-
-    // If the search query is empty, show a message
-    if (!query) {
-      resultsContainer.innerHTML = `<p class='no-results'>⚠️ 검색 내용을 입력해주세요.</p>`;
-      return;
-    }
-
-    try {
-      const response = await fetch("/faq.json");
-      if (!response.ok) throw new Error("Failed to load FAQ data");
-
-      const faqs = await response.json();
-
-      // Filter FAQs by title or body containing the search query
-      const filtered = faqs.filter(faq =>
-        faq.title.toLowerCase().includes(query.toLowerCase()) ||
-        faq.body.toLowerCase().includes(query.toLowerCase())
-      );
-
-      // If no results found, display the searched query
-      if (filtered.length === 0) {
-        resultsContainer.innerHTML = `<p class='no-results'>❌ "<span class="text-red-500">${query}</span>" 검색 결과가 없습니다.</p>`;
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get("query")?.trim().toLowerCase() || "";
+      const resultsContainer = document.getElementById("results");
+      const searchTitle = document.querySelector(".search-title");
+  
+      // Update search title to display "query word" 검색 결과
+      if (query) {
+        searchTitle.innerHTML = `🔍 "<span class="text-red-500">${query}</span>" 검색 결과`;
+      }
+  
+      // If the search query is empty, show a message
+      if (!query) {
+        resultsContainer.innerHTML = `<p class='no-results'>⚠️ 검색 내용을 입력해주세요.</p>`;
         return;
       }
-
-      // Generate collapsible titles for each matching FAQ
-      resultsContainer.innerHTML = filtered.map(faq => `
-        <div class="search-result">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            <span class="text-lg text-center">${faq.title}</span>
-            <button class="toggle-btn text-xl">+</button>
+  
+      try {
+        const response = await fetch("/faq.json");
+        if (!response.ok) throw new Error("Failed to load FAQ data");
+  
+        const faqData = await response.json();
+        let filteredResults = [];
+  
+        // Iterate through categories and extract matching FAQs
+        faqData.forEach(category => {
+          category.faqs.forEach(faq => {
+            if (
+              faq.title.toLowerCase().includes(query) ||
+              faq.body.toLowerCase().includes(query)
+            ) {
+              filteredResults.push({ 
+                category: category.category, 
+                title: faq.title, 
+                body: faq.body 
+              });
+            }
+          });
+        });
+  
+        // If no results found, display a message
+        if (filteredResults.length === 0) {
+          resultsContainer.innerHTML = `<p class='no-results'>❌ "<span class="text-red-500">${query}</span>" 검색 결과가 없습니다.</p>`;
+          return;
+        }
+  
+        // Generate collapsible FAQ items
+        resultsContainer.innerHTML = filteredResults.map(faq => `
+          <div class="search-result">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span class="text-lg">${faq.title}</span>
+              <span class="text-sm text-gray-500">(${faq.category})</span>
+              <button class="toggle-btn text-xl">+</button>
+            </div>
+            <div class="faq-answer text-left">
+              ${faq.body}
+            </div>
           </div>
-          <div class="faq-answer text-left">
-            ${faq.body}
-          </div>
-        </div>
-      `).join("");
-    } catch (error) {
-      console.error("Error fetching FAQs:", error);
-      resultsContainer.innerHTML = `<p class='no-results text-red-500'>❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>`;
+        `).join("");
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+        resultsContainer.innerHTML = `<p class='no-results text-red-500'>❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>`;
+      }
     }
-  }
-
-  searchFAQs();
-</script>
+  
+    searchFAQs();
+  </script>
+  
 </body>
 </html>

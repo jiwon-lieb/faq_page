@@ -176,59 +176,68 @@
 
     <!-- Search Bar -->
     <form x-data="{ 
-        searchQuery: '',
-        searchResults: '',
-        async performSearch() {
-          const query = this.searchQuery.trim().toLowerCase();
-          this.searchResults = ''; // Reset previous messages
-          if (!query) {
-            this.searchResults = '⚠️ 검색어를 입력해주세요.';
-            return;
-          }
-  
-          try {
-            const response = await fetch('/faq.json');
-            const faqs = await response.json();
-            const matches = faqs.filter(faq =>
-              faq.title.toLowerCase().includes(query) ||
-              faq.body.toLowerCase().includes(query)
-            );
-  
-            if (matches.length === 0) {
-              this.searchResults = `❌ <span class='text-s text-red-500'>&quot;${this.searchQuery}&quot; 검색 결과를 찾을 수 없습니다. </span>`;
-            } else {
-              window.location.href = `search.html?query=${encodeURIComponent(query)}`;
-            }
-  
-          } catch (error) {
-            console.error('Error fetching FAQs:', error);
-            this.searchResults = `❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.`;
-          }
+      searchQuery: '',
+      searchResults: '',
+      async performSearch() {
+        const query = this.searchQuery.trim().toLowerCase();
+        this.searchResults = ''; // Reset previous messages
+        if (!query) {
+          this.searchResults = '⚠️ 검색어를 입력해주세요.';
+          return;
         }
 
-      }" x-on:submit.prevent="await performSearch" class="w-full max-w-lg text-center">
+        try {
+          const response = await fetch('/faq.json');
+          const faqData = await response.json();
+          let matches = [];
 
-      <!-- Search Input -->
-      <input autocomplete="off" x-model="searchQuery" type="text" id="searchQuery" placeholder="검색어를 입력하세요"
-        class="search-bar mb-3">
+          // Iterate through categories and extract matching FAQs
+          faqData.forEach(category => {
+            category.faqs.forEach(faq => {
+              if (
+                faq.title.toLowerCase().includes(query) || 
+                faq.body.toLowerCase().includes(query)
+              ) {
+                matches.push({ category: category.category, title: faq.title, body: faq.body });
+              }
+            });
+          });
 
-      <!-- Search Button -->
-      <button 
-        @click="performSearch" 
-        type="submit" 
-        x-bind:disabled="searchQuery.length === 0" 
-        x-bind:class="searchQuery.length > 0 
-          ? 'bg-[#23292F] text-[#EFF2F5] hover:bg-[#808A96] hover:text-[#F6F8FA] transition-all' 
-          : 'bg-[#EFF2F5] text-[#BBC4CF] cursor-not-allowed'"
-        class="btn mb-3 mx-auto px-6 py-3 rounded-full shadow-md font-semibold text-lg transition-all">
-        🔍 검색
-    </button>
+          if (matches.length === 0) {
+            this.searchResults = `❌ <span class='text-s text-red-500'>&quot;${this.searchQuery}&quot; 검색 결과를 찾을 수 없습니다. </span>`;
+          } else {
+            window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+          }
 
+        } catch (error) {
+          console.error('Error fetching FAQs:', error);
+          this.searchResults = `❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.`;
+        }
+      }
 
-      <!-- Search Results Message (Appears Below Button Without Reloading) -->
-      <p class="mt-4 mb-3" x-html="searchResults"></p>
+    }" x-on:submit.prevent="await performSearch" class="w-full max-w-lg text-center">
 
-    </form>
+    <!-- Search Input -->
+    <input autocomplete="off" x-model="searchQuery" type="text" id="searchQuery" placeholder="검색어를 입력하세요"
+      class="search-bar mb-3">
+
+    <!-- Search Button -->
+    <button 
+      @click="performSearch" 
+      type="submit" 
+      x-bind:disabled="searchQuery.length === 0" 
+      x-bind:class="searchQuery.length > 0 
+        ? 'bg-[#23292F] text-[#EFF2F5] hover:bg-[#808A96] hover:text-[#F6F8FA] transition-all' 
+        : 'bg-[#EFF2F5] text-[#BBC4CF] cursor-not-allowed'"
+      class="btn mb-3 mx-auto px-6 py-3 rounded-full shadow-md font-semibold text-lg transition-all">
+      🔍 검색
+  </button>
+
+    <!-- Search Results Message (Appears Below Button Without Reloading) -->
+    <p class="mt-4 mb-3" x-html="searchResults"></p>
+
+</form>
+
 
 
     <!-- Subtitle -->
