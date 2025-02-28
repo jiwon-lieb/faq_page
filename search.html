@@ -141,11 +141,21 @@
     }
 
     async function searchFAQs() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const query = urlParams.get("query")?.toLowerCase() || "";
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get("query")?.trim().toLowerCase() || "";
+    const resultsContainer = document.getElementById("results");
+
+    // If the search query is empty, show a message
+    if (!query) {
+      resultsContainer.innerHTML = `<p class='no-results'>⚠️ 검색 내용을 입력해주세요.</p>`;
+      return;
+    }
+
+    try {
       const response = await fetch("/faq.json");
+      if (!response.ok) throw new Error("Failed to load FAQ data");
+
       const faqs = await response.json();
-      const resultsContainer = document.getElementById("results");
 
       // Filter FAQs by title or body containing the search query
       const filtered = faqs.filter(faq =>
@@ -153,9 +163,9 @@
         faq.body.toLowerCase().includes(query)
       );
 
-      // If no results found, display a message
+      // If no results found, display the searched query
       if (filtered.length === 0) {
-        resultsContainer.innerHTML = "<p class='no-results'>❌ 검색 결과가 없습니다.</p>";
+        resultsContainer.innerHTML = `<p class='no-results'>❌ "${query}" 검색 결과가 없습니다.</p>`;
         return;
       }
 
@@ -166,14 +176,18 @@
             <span class="text-lg text-center">${faq.title}</span>
             <button class="toggle-btn text-xl">+</button>
           </div>
-          <div class="faq-answer answer-body text-left" -mt-10>
+          <div class="faq-answer answer-body text-left">
             ${faq.body}
           </div>
         </div>
       `).join("");
+    } catch (error) {
+      console.error("Error fetching FAQs:", error);
+      resultsContainer.innerHTML = `<p class='no-results text-red-500'>❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>`;
     }
+  }
 
-    searchFAQs();
+  searchFAQs();
   </script>
 </body>
 </html>
