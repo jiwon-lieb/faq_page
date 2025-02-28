@@ -31,17 +31,17 @@
       font-size: 1.1rem;
       font-weight: 600;
       border-radius: 50px;
-      box-shadow: 0 4px 10px rgba(59, 67, 75, 0.15);
+      box-shadow: 0 5px 10px rgba(59, 67, 75, 0.15);
       transition: all 0.3s ease-in-out;
     }
 
     .btn-primary {
-      background: #BBC4CF;
-      color: 808A96;
+      background: #3B434B;
+      color: #F6F8FA;
     }
 
     .btn-primary:hover {
-      background: #808A96;
+      background: #3B434B;
       transform: translateY(-2px);
     }
 
@@ -99,7 +99,7 @@
   <!-- Navbars -->
   <header class="absolute top-6 left-12">
     <a href="/">
-      <img src="/assets/logo_white.png" alt="White Logo" class="h-6">
+      <img src="/assets/logo_white.png" alt="White Logo" class="h-7">
     </a>
   </header>
 
@@ -213,12 +213,17 @@
         class="search-bar mb-3">
 
       <!-- Search Button -->
-      <button @click="performSearch" type="submit" x-bind:disabled="searchQuery.length === 0" x-bind:class="searchQuery.length > 0 
-              ? 'bg-[#3B434B] text-[#EFF2F5] hover:bg-[#EFF2F5] hover:text-[#23292F] transition-all' 
-              : 'bg-[#3B434B] text-gray-400 cursor-not-allowed'"
+      <button 
+        @click="performSearch" 
+        type="submit" 
+        x-bind:disabled="searchQuery.length === 0" 
+        x-bind:class="searchQuery.length > 0 
+          ? 'bg-[#23292F] text-[#EFF2F5] hover:bg-[#808A96] hover:text-[#1B1F23] transition-all' 
+          : 'bg-[#EFF2F5] text-[#BBC4CF] cursor-not-allowed'"
         class="btn mb-3 mx-auto px-6 py-3 rounded-full shadow-md font-semibold text-lg transition-all">
         🔍 검색
-      </button>
+    </button>
+
 
       <!-- Search Results Message (Appears Below Button Without Reloading) -->
       <p class="mt-4 mb-3" x-html="searchResults"></p>
