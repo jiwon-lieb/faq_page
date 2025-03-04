@@ -26,42 +26,6 @@
       position: relative;
     }
 
-    /* FAQ Page Title */
-    .faq-page-title {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: white; /* White font */
-      text-align: center;
-      margin-top: 50px;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Adds readability */
-    }
-
-
-    .faq-container {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      max-width: 1000px; /* Increased width for better layout */
-      margin-top: 0px;
-      margin-bottom: 100px;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(59, 67, 75, 0.1);
-      min-height: 650px;
-      overflow: hidden;
-    }
-
-    /* FAQ Title */
-    .faq-title {
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 30px;
-      color: #3B434B;
-    }
-
     .faq-header {
       text-align: center;
       font-size: 1.6rem;
@@ -69,103 +33,23 @@
       margin-bottom: 15px;
     }
 
-    .faq-categories {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-width: 220px;
-      overflow-y: auto;
-      max-height: 500px;
-      padding-right: 10px;
-    }
-
-    /* Category box with outline and padding */
-    .faq-category {
-      text-align: center;
-      font-size: 1rem;
-      font-weight: bold;
-      padding: 10px 15px;
-      border: 2px solid #808A96;
-      background: #EFF2F5;
-      color: #3B434B;
-      cursor: pointer;
-      transition: background 0.3s ease, border-color 0.3s ease;
-      border-radius: 8px;
-      text-align: left;
-      white-space: nowrap; /* Prevents text from breaking */
-    }
-
-    /* Hover effect: Darker outline and background color */
-    .faq-category:hover {
-      background: #E2EBF2; /* Slightly darker gray-blue */
-      border-color: #3B434B; /* Darker border for emphasis */
-      color: #1B1F23; /* Slightly darker text for contrast */
-    }
-
     .faq-category.active {
-      background: #3B434B; /* Keeps the light theme */
-      border-color: #3B434B;
-      color: #EFF2F5;
-      box-shadow: 0 0 10px rgba(128, 138, 150, 0.3), 
-                  0 0 15px rgba(128, 138, 150, 0.2); /* Soft glow effect */
+        background: #3B434B;
+        border-color: #3B434B;
+        color: #FFFFFF;
+        box-shadow: 0 4px 10px rgba(59, 67, 75, 0.3);
+        transform: translateY(0);
     }
 
     .faq-content {
-      flex: 3; /* Takes up more space */
-      display: none; /* Hidden by default */
+      display: flex;
       flex-direction: column;
       gap: 10px;
-      border-left: 2px solid #808A96; /* Visual separation */
-      padding-left: 20px;
-      overflow-y: auto;
-      max-height: 550px;
-    }
-    
-
-    .faq-list {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      padding-left: 5px;
-      border-top: none; 
-      border-radius: 0 0 8px 8px;
-      padding-bottom: 10px;
     }
 
     .faq-item:last-child {
       margin-bottom: 20px;
-    }
-
-
-/* Question styling */ 
-    .faq-question {
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 12px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 10px rgba(59, 67, 75, 0.15);
-      border-left: 4px solid #808A96;
-      transition: background 0.3s ease;
-    }
-
-    .faq-question:hover {
-      background: #D9E4ED;
-    }
-
-    .faq-answer {
-      white-space: pre-line;
-      display: none;
-      padding: 12px;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      border-top: 1px solid #E2EBF2;
-    }
+    } 
 
     header {
       position: absolute;
@@ -180,12 +64,12 @@
       background: #3B434B;
       color: white;
       padding: 15px 0;
-      margin-top: 100px;
-      margin-left: 0;
-      margin-bottom: 0;
-      box-sizing: 0;
+      margin-top: auto;
       position: relative;
-      bottom: 0;
+    }
+
+    footer p {
+      margin: 5px 0; /* Reduce text spacing */
     }
 
     footer a {
@@ -208,19 +92,41 @@
     </a>
   </header>
 
-  <h1 class="faq-page-title">자주 묻는 질문</h1>
-
-  <!-- FAQ Container -->
-  <div class="faq-container">
-    <!-- Left column: Category List -->
-    <div class="faq-categories" id="faq-categories">
-    </div>
-  
-    <!-- Right column: FAQ Content (Initially empty, dynamically populated) -->
-    <div class="faq-content" id="faq-content">
-    </div>
+<!-- FAQ Container -->
+<div class="faq-container flex flex-row justify-between w-full max-w-[1000px] mt-[120px] mb-[100px] flex-grow p-5 bg-white rounded-lg shadow-lg min-h-[650px] overflow-hidden items-start">
+  <!-- Left Column: Categories -->
+  <div class="flex flex-col w-[260px] justify-start mx-[10px] pr-4">
+    <!-- FAQ Title -->
+    <h2 class="text-[1.75rem] font-bold p-[12px] text-center mb-[10px] text-[#3B434B]">자주 묻는 질문</h2>
+    <!-- FAQ Categories -->
+    <div class="flex flex-col gap-2 min-w-[220px] max-h-[500px] overflow-y-auto pr-2" id="faq-categories"></div>
   </div>
-  
+  <!-- Right Column: FAQ Content -->
+  <div class="flex flex-col flex-grow pl-[25px] gap-[15px] border-l-2 border-[#808A96] overflow-y-auto min-h-[650px] self-stretch">
+    <!-- FAQ Contact -->
+    <div class="text-lg font-semibold text-[#3B434B] flex items-center whitespace-nowrap my-[10px] mb-[9px] p-[9px]">
+      <p>
+        찾으시는 질문이 없나요? 
+        <a href="mailto:contact@rebellions.ai" class="text-gray-800 hover:text-gray-600 underline">여기</a>로 연락 주세요!
+      </p>
+      <!-- Search box -->
+      <div class="border border-gray-300 rounded-full ml-6 flex justify-center items-center px-4 py-2 shadow-sm w-[250px] mt-53">
+        <input type="text" 
+              placeholder="검색어를 입력하세요" 
+              class="text-sm text-center w-full px-3 py-2 w-36 focus:outline-none" 
+            id="faqSearchInput"
+            onkeypress="handleKeyPress(event)">
+      </div>
+      <button 
+          class="ml-2 px-4 py-2 text-sm bg-[#23292F] text-[#EFF2F5] font-medium rounded-full shadow-md transition-all hover:bg-[#808A96] hover:text-[#F6F8FA]"
+          onclick="performSearch()">
+          🔍 검색
+      </button>
+      
+    </div>
+    <div id="faq-content" class="faq-content"></div>
+  </div>
+</div>
 
   <!-- Fixed Footer -->
   <footer class="left-0 w-full text-center text-white p-4">
@@ -267,6 +173,9 @@
       categories.forEach((category, index) => {
         // Create category button
         const categoryDiv = document.createElement("div");
+        // apply Tailwind classes to faq-category
+        categoryDiv.className =
+          "faq-category faq-category flex items-center justify-center px-6 py-3 text-lg font-semibold border-2 border-[#808A96] bg-[#EFF2F5] text-[#3B434B] rounded-full shadow-md transition-all cursor-pointer hover:bg-[#3B434B] hover:text-[#F6F8FA] hover:border-[#3B434B] hover:shadow-lg active:bg-[#3B434B] active:text-white active:shadow-lg"
         categoryDiv.classList.add("faq-category");
         categoryDiv.innerText = category.category;
         categoryDiv.onclick = () => showFAQ(category.category, category.faqs);
@@ -308,12 +217,15 @@
       faqItem.classList.add("faq-item");
 
       faqItem.innerHTML = `
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question text-[1rem] font-semibold p-[12px] cursor-pointer flex justify-between items-center rounded-lg mb-[12px] shadow-md border-l-[4px] border-[#808A96] transition duration-300 ease-in-out hover:bg-[#D9E4ED]" 
+            onclick="toggleFaq(this)">
           <span>${faq.title}</span>
           <button class="toggle-btn text-xl">+</button>
         </div>
-        <div class="faq-answer">${faq.body}</div>
-      `;
+        <div class="faq-answer hidden whitespace-pre-line p-[12px] text-[0.95rem] leading-relaxed border-t border-[#E2EBF2]">
+          ${faq.body}
+        </div>
+    `;
 
       faqContentContainer.appendChild(faqItem);
     });
@@ -334,6 +246,26 @@
 
 // Load FAQs on page load
 window.onload = loadFAQs;
+
+function performSearch() {
+    const query = document.getElementById("faqSearchInput").value.trim();
+
+    if (query === "") {
+      alert("검색어를 입력하세요!"); // Prevent empty search
+      return;
+    }
+
+    console.log("Redirecting to /search.html with query:", query);
+
+    // Redirect correctly from /faq/index.html to /search.html
+    window.location.href = `/search.html?query=${encodeURIComponent(query)}`;
+}
+
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      performSearch(); // Trigger search on Enter key
+    }
+  }
 
   </script>
 

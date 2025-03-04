@@ -13,12 +13,10 @@
       font-family: 'Pretendard', sans-serif;
       background: url('/assets/background.jpeg') no-repeat center center fixed;
       background-size: cover;
-      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      align-items: center;
       overflow: hidden;
+      overflow-y: auto;
       position: relative;
       /* ensures absolute/fixed children are relative to body */
     }
@@ -73,13 +71,15 @@
     }
 
     footer {
-      position: fixed;
+      position: relative;
       bottom: 0;
       width: 100%;
       text-align: center;
       background: #3B434B;
       color: white;
       padding: 15px 0;
+      bottom: 0;
+      margin-top: 100px;
     }
 
     footer a {
@@ -103,76 +103,15 @@
     </a>
   </header>
 
-  <!-- Main Card (Balanced within screen height) -->
   <div
-    class="flex flex-col items-center justify-center text-center p-10 bg-white shadow-xl rounded-2xl border border-[#E2EBF2] max-w-xl w-full relative -mt-40">
+    class="main-container flex flex-col items-center justify-center text-center p-10 bg-white shadow-xl rounded-2xl border border-[#E2EBF2] max-w-xl w-full relative mt-[120px] mb-[120px]">
 
     <!-- Secondary Logo Above Title -->
     <img src="/assets/logo.png" alt="Black Logo" class="h-6 mb-4">
 
-    <!-- Title -->
     <h1 class="text-4xl font-extrabold text-[#3B434B] mb-6 mt-4">
       무엇을 도와드릴까요?
     </h1>
-
-    <script>
-      //     async function performSearch() { 
-      //   const query = this.searchQuery.trim().toLowerCase();
-      //   this.searchResults = ''; // Reset previous messages
-
-      // if (!query) {
-      //     this.searchResults = `<p class='text-red-500 mt-2'>⚠️ 검색어를 입력해주세요.</p>`;
-      //     return;
-      // }
-      //   try {
-      //       // Fetch FAQ data
-      // const response = await fetch('/faq.json');
-      // if (!response.ok) throw new Error('Failed to load FAQ data');
-
-      // const faqs = await response.json();
-      // const matches = faqs.filter(faq => 
-      //     faq.title.toLowerCase().includes(query) || 
-      //     faq.body.toLowerCase().includes(query)
-      // );
-
-      //       // If no results found, show message under the button
-      //       if (matches.length === 0) {
-      //           this.searchResults = `<p class='text-gray-500 mt-3'>❌ ${query} 검색 결과를 찾을 수 없습니다.</p>`;
-      //       } 
-      //       else {
-      //           // ✅ Ensure Redirection on Match
-      //           window.location.href = `search.html?query=${encodeURIComponent(query)}`;
-      //       }
-      //   } catch (error) {
-      // console.error('Error fetching FAQs:', error);
-      // this.searchResults = `<p class='text-red-500 mt-3'>❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>`;
-      // }
-      // }
-
-      // async function performSearch() {
-        // const query = this.searchQuery.trim().toLowerCase();
-        // this.searchResults = ''; // Reset previous messages
-        // if (!query) {
-        //   this.searchResults = `<p class='text-red-500 mt-2'>⚠️ 검색어를 입력해주세요.</p>`;
-        //   return;
-        // }
-
-        // try {
-        //   const response = await fetch('/faq.json');
-        //   const faqs = await response.json();
-        //   const matches = faqs.filter(faq =>
-        //     faq.title.toLowerCase().includes(query) ||
-        //     faq.body.toLowerCase().includes(query)
-        //   );
-
-        //   console.log(matches);
-
-        // } catch (error) {
-        //   console.error('Error fetching FAQs:', error);
-        //   this.searchResults = `<p class='text-red-500 mt-3'>❌ FAQ 데이터를 불러오는 중 오류가 발생했습니다.</p>`;
-        // }
-      // }
-    </script>
 
     <!-- Search Bar -->
     <form x-data="{ 
