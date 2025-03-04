@@ -6,7 +6,7 @@ createdDate: "2025-03-04"
 category: "RBLN SDK"
 tags: ["sample code", "model zoo", "examples"]
 ---
-Rebellions Model Zoo provides code examples for different models that you can optimize and test in our RBLN online documentation. You can find the code examples for each model on the following pages under the Task column:</br></br>
+Rebellions Model Zoo provides code examples for different models that you can optimize and test in our RBLN online documentation. You can find the code examples for each model on the following pages under the Task column:
 
 - HuggingFace
 - Pytorch
