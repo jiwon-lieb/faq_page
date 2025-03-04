@@ -13,4 +13,4 @@ RBLN SDK를 사용하기 위해서는 RBLN 드라이버(driver), 컴파일러(co
 3. 모델주를 확인하여 원하는 모델이 RBLN SDK로 지원되는지 확인합니다.
 4. 샘플코드를 실행하여 문제가 없는지 확인합니다.
 
-더 자세한 내용은 <a href="https://rebellions.ai/docs/sdk" class="underline" target="_blank">SDK Installation Guide</a>에서 확인해주세요.
+더 자세한 내용은 <a href="https://docs.rbln.ai/index.html" class="underline" target="_blank">SDK Installation Guide</a>에서 확인해주세요.
