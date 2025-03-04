@@ -1,6 +1,8 @@
 ---
 title: "샘플 코드는 어디에 있나요?"
 slug: "sample-code"
+author: "Jiwon"
+createdDate: "2025-03-04"
 category: "RBLN SDK"
 tags: ["sample code", "model zoo", "examples"]
 ---

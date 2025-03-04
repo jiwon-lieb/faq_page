@@ -1,6 +1,8 @@
 ---
 title: "RBLN SDK를 어떻게 사용하나요?"
-slug: "how-to-use-rbln-sdk"            
+slug: "how-to-use-rbln-sdk"
+author: "Jiwon"
+createdDate: "2025-03-04"          
 category: "RBLN SDK"                    
 tags: ["installation", "setup"]         
 ---

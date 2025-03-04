@@ -1,6 +1,8 @@
 ---
 title: "자꾸 버그가 생기는데요"
 slug: "bug-issues"
+author: "Jiwon"
+createdDate: "2025-03-04"
 category: "문제 해결"
 tags: ["troubleshooting", "debugging", "bug report"]
 ---

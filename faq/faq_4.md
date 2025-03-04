@@ -1,6 +1,8 @@
 ---
 title: "훈련도 되나요?"
 slug: "training-support"
+author: "Jiwon"
+createdDate: "2025-03-04"
 category: "제품"
 tags: ["training", "inference", "model training"]
 ---

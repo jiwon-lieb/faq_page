@@ -9,7 +9,9 @@
           "installation",
           "setup"
         ],
-        "body": "RBLN SDK를 사용하기 위해서는 RBLN 드라이버(driver), 컴파일러(compiler), 모델주(Model Zoo)의 적절한 버전을 설치해야 합니다.\n\n1. RBLN 드라이버를 설치합니다.\n2. RBLN 컴파일러를 설치합니다.\n3. 모델주를 확인하여 원하는 모델이 RBLN SDK로 지원되는지 확인합니다.\n4. 샘플코드를 실행하여 문제가 없는지 확인합니다.\n\n더 자세한 내용은 <a href=\"https://rebellions.ai/docs/sdk\" class=\"underline\" target=\"_blank\">SDK Installation Guide</a>에서 확인해주세요."
+        "body": "RBLN SDK를 사용하기 위해서는 RBLN 드라이버(driver), 컴파일러(compiler), 모델주(Model Zoo)의 적절한 버전을 설치해야 합니다.\n\n1. RBLN 드라이버를 설치합니다.\n2. RBLN 컴파일러를 설치합니다.\n3. 모델주를 확인하여 원하는 모델이 RBLN SDK로 지원되는지 확인합니다.\n4. 샘플코드를 실행하여 문제가 없는지 확인합니다.\n\n더 자세한 내용은 <a href=\"https://rebellions.ai/docs/sdk\" class=\"underline\" target=\"_blank\">SDK Installation Guide</a>에서 확인해주세요.",
+        "author": "Jiwon",
+        "createdDate": "2025-03-04"
       },
       {
         "title": "샘플 코드는 어디에 있나요?",
@@ -19,9 +21,13 @@
           "model zoo",
           "examples"
         ],
-        "body": "Rebellions Model Zoo provides code examples for different models that you can optimize and test in our RBLN online documentation. You can find the code examples for each model on the following pages under the Task column:</br></br>\n\n- HuggingFace\n- Pytorch\n- Tensorflow"
+        "body": "Rebellions Model Zoo provides code examples for different models that you can optimize and test in our RBLN online documentation. You can find the code examples for each model on the following pages under the Task column:</br></br>\n\n- HuggingFace\n- Pytorch\n- Tensorflow",
+        "author": "Jiwon",
+        "createdDate": "2025-03-04"
       }
-    ]
+    ],
+    "author": "Jiwon",
+    "createdDate": "2025-03-04"
   },
   {
     "category": "문제 해결",
@@ -34,9 +40,13 @@
           "debugging",
           "bug report"
         ],
-        "body": "While we run tests covering most conceivable situations before release, bugs still happen.\nSend us a file of Debug Dump Binaries (DDBs) so that we can provide technical support. The DDB file is safely encrypted and includes all the compilation steps and error logs. </br></br>\n\nPlease contact our <a href=\"mailto:support@rebellions.ai\" class=\"underline\">Technical Support Team</a>."
+        "body": "While we run tests covering most conceivable situations before release, bugs still happen.\nSend us a file of Debug Dump Binaries (DDBs) so that we can provide technical support. The DDB file is safely encrypted and includes all the compilation steps and error logs. </br></br>\n\nPlease contact our <a href=\"mailto:support@rebellions.ai\" class=\"underline\">Technical Support Team</a>.",
+        "author": "Jiwon",
+        "createdDate": "2025-03-04"
       }
-    ]
+    ],
+    "author": "Jiwon",
+    "createdDate": "2025-03-04"
   },
   {
     "category": "제품",
@@ -49,7 +59,9 @@
           "inference",
           "model training"
         ],
-        "body": "현재로서는 추론만 지원하고 있습니다. 향후 훈련 지원이 되면 공지할 계획입니다."
+        "body": "현재로서는 추론만 지원하고 있습니다. 향후 훈련 지원이 되면 공지할 계획입니다.",
+        "author": "Jiwon",
+        "createdDate": "2025-03-04"
       },
       {
         "title": "REBEL은 무엇인가요?",
@@ -60,7 +72,43 @@
           "NPU",
           "hardware"
         ],
-        "body": "리벨리온에서 개발 중인 칩렛 구조의 AI 추론용 NPU로, 근시일 내 출시 예정입니다."
+        "body": "리벨리온에서 개발 중인 칩렛 구조의 AI 추론용 NPU로, 근시일 내 출시 예정입니다.",
+        "author": "Jiwon",
+        "createdDate": "2025-03-04"
+      }
+    ],
+    "author": "Jiwon",
+    "createdDate": "2025-03-04"
+  },
+  {
+    "category": "기술 일반",
+    "faqs": [
+      {
+        "title": "NPU와 GPU의 차이점은?",
+        "slug": "npu와-gpu의-차이점은?",
+        "tags": [
+          "npu",
+          "gpu"
+        ],
+        "body": "**NPU(Neural Processing Unit)와 GPU(Graphics Processing Unit)는 모두 병렬 연산을 수행하지만, 최적화된 연산 방식과 사용 목적이 다릅니다.**\n\n- **GPU**는 원래 그래픽 렌더링을 위해 설계되었지만, 대규모 병렬 연산이 가능해 AI 학습(training)과 고성능 컴퓨팅(HPC)에 활용됩니다. 일반적으로 FP32/FP16 연산을 사용하며, CUDA 코어 및 Tensor 코어를 포함하여 다양한 연산을 지원합니다.\n- **NPU**는 AI/딥러닝 추론(inference)에 특화된 프로세서로, 저전력에서 효율적인 연산을 수행하도록 설계되었습니다. INT8, FP16과 같은 저비트 연산을 최적화하며, 신경망 연산을 가속하는 전용 하드웨어 구조를 가집니다.\n\n### **주요 차이점**\n\n- **설계 목적**: GPU는 범용 병렬 연산용, NPU는 AI 추론 최적화\n- **연산 방식**: GPU는 높은 FLOPS 처리, NPU는 저전력 고효율 연산\n- **사용 사례**: GPU는 학습과 그래픽 처리, NPU는 실시간 AI 응용 (음성, 영상 인식 등)\n\n즉, **GPU는 AI 학습과 범용 연산에 강하고, NPU는 AI 추론을 최적화하여 보다 빠르고 전력 효율적인 연산을 수행합니다.**",
+        "author": "Jiwon",
+        "createdDate": "2025-03-04"
+      }
+    ]
+  },
+  {
+    "category": "딥러닝",
+    "faqs": [
+      {
+        "title": "지원하는 모델 종류는 무엇인가요??",
+        "slug": "지원하는-모델-종류는-무엇인가요??",
+        "tags": [
+          "models",
+          "huggingface"
+        ],
+        "body": "리벨리온은 Llama, DeepSeek를 비롯한 수많은 최신 모델을 지원하고 있습니다. 최신 지원 모델 목록은 [여기(https://docs.rbln.ai/software/optimum/optimum_rbln.html)에서 확인해보세요.",
+        "author": "Jiwon",
+        "createdDate": "2025-03-04"
       }
     ]
   }

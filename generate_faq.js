@@ -1,50 +1,109 @@
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
-const { marked } = require("marked");
 
-const faqDir = path.join(__dirname, "faq");
-const outputFilePath = path.join(__dirname, "/faq.json");
+// File paths
+const faqJsonPath = path.join(__dirname, "faq.json");
+const faqDirectory = path.join(__dirname, "faq");
+const faqTxtPath = path.join(__dirname, "faq", "faq-summary.txt");
 
-const faqData = fs.readdirSync(faqDir)
-  .filter(file => file.endsWith(".md"))
-  .map(file => {
-    const filePath = path.join(faqDir, file);
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(fileContent);
+// Default values
+const defaultAuthor = "Jiwon";
 
-    return {
-      title: data.title,
-      slug: data.slug,
-      category: data.category || "기타",  // Default to '기타' if no category is set
-      tags: data.tags || [],
-      body: content.trim()
-    };
-  });
+// Check if `faq.json` exists
+if (!fs.existsSync(faqJsonPath)) {
+    console.error("❌ Error: `faq.json` not found!");
+    process.exit(1);
+}
 
-// Group FAQs by category
-const groupedFAQs = faqData.reduce((acc, faq) => {
-  if (!acc[faq.category]) {
-    acc[faq.category] = [];
-  }
-  acc[faq.category].push({
-    title: faq.title,
-    slug: faq.slug,
-    tags: faq.tags,
-    body: faq.body
-  });
-  return acc;
-}, {});
+// Read and parse `faq.json`
+let faqCategories;
+try {
+    faqCategories = JSON.parse(fs.readFileSync(faqJsonPath, "utf8"));
+    if (!Array.isArray(faqCategories)) {
+        console.warn("⚠️ Warning: `faq.json` format is incorrect.");
+        process.exit(1);
+    }
+} catch (error) {
+    console.error("❌ Error parsing `faq.json`:", error);
+    process.exit(1);
+}
 
-// Convert object to an array format suitable for frontend
-const structuredFAQs = Object.keys(groupedFAQs).map(category => ({
-  category,
-  faqs: groupedFAQs[category]
-}));
+// Debug: Log loaded FAQ categories
+console.log("✅ Loaded FAQ Categories:", faqCategories.length, "categories");
 
-// Save as JSON
-fs.writeFileSync(outputFilePath, JSON.stringify(structuredFAQs, null, 2), "utf-8");
+// Get today's date
+const today = new Date().toISOString().split("T")[0];
 
-console.log("✅ (๑•᎑•๑)♬* 성공이에요 - FAQ JSON 파일이 업데이트되었습니다!");
+// Track if updates are made
+let updated = false;
 
+// **STEP 1: Scan for new Markdown FAQ files**
+const faqFiles = fs.readdirSync(faqDirectory).filter(file => file.endsWith(".md"));
 
+faqFiles.forEach(file => {
+    const filePath = path.join(faqDirectory, file);
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    const parsed = matter(fileContent); // Extract front matter metadata
+
+    const title = parsed.data.title || file.replace(".md", ""); // Default to filename if no title
+    const category = parsed.data.category || "Uncategorized"; // Default category
+    const tags = parsed.data.tags || []; // Tags from front matter
+    const body = parsed.content.trim(); // Extract markdown body
+
+    // **Check if FAQ already exists in `faq.json`**
+    let categoryEntry = faqCategories.find(c => c.category === category);
+    if (!categoryEntry) {
+        categoryEntry = { category: category, faqs: [] };
+        faqCategories.push(categoryEntry);
+    }
+
+    // Check if this FAQ title already exists
+    let existingFAQ = categoryEntry.faqs.find(faq => faq.title === title);
+    if (!existingFAQ) {
+        // **Add new FAQ to `faq.json`**
+        categoryEntry.faqs.push({
+            title: title,
+            slug: title.toLowerCase().replace(/\s+/g, "-"),
+            tags: tags,
+            body: body,
+            author: defaultAuthor,
+            createdDate: today
+        });
+        updated = true;
+    }
+});
+
+// **STEP 2: Save Updated `faq.json`**
+if (updated) {
+    try {
+        fs.writeFileSync(faqJsonPath, JSON.stringify(faqCategories, null, 2), "utf8");
+        console.log("✅ `faq.json` updated with newly added FAQs from Markdown files.");
+    } catch (error) {
+        console.error("❌ Error writing to `faq.json`:", error);
+        process.exit(1);
+    }
+}
+
+// **STEP 3: Generate FAQ Summary File**
+let markdownContent = `# FAQ Summary
+## Maintained by: Jiwon
+## Last Updated: ${today}
+
+| Category     | Title                                    | Author  | Created Date |
+|-------------|-----------------------------------------|---------|--------------|
+`;
+
+faqCategories.forEach(category => {
+    category.faqs.forEach(faq => {
+        markdownContent += `| ${category.category} | ${faq.title} | ${faq.author} | ${faq.createdDate} |\n`;
+    });
+});
+
+// **STEP 4: Write to faq-summary.txt**
+try {
+    fs.writeFileSync(faqTxtPath, markdownContent, "utf8");
+    console.log("🎉 성공이에요! FAQ 요약 파일이 업데이트되었습니다!");
+} catch (error) {
+    console.error("❌ Error writing `faq-summary.txt`:", error);
+}

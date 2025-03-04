@@ -1,6 +1,8 @@
 ---
 title: "REBEL은 무엇인가요?"
 slug: "what-is-rebel"
+author: "Jiwon"
+createdDate: "2025-03-04"
 category: "제품"
 tags: ["REBEL", "chiplet", "NPU", "hardware"]
 ---
