@@ -126,7 +126,7 @@ node generate_faq.js
 ├── faq.json               # `faq/` 폴더 내 MD 파일이 JSON으로 자동 변환되어 저장됨
 ├── search.html            # 검색 결과 페이지
 ├── generate_faq.js        # Markdown 파일을 JSON으로 변환하는 스크립트
-└── .eleventy.js           # Eleventy 설정 파일 (필요 시 수정)
+└── eleventy.config.js           # Eleventy 설정 파일 (필요 시 수정)
 ```
 
 ---
