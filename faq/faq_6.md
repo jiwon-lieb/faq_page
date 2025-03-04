@@ -3,7 +3,7 @@ title: "NPU와 GPU의 차이점은?"
 slug: "npu-gpu-difference"
 author: "Jiwon"
 createdDate: "2025-03-04"            
-category: "기술 일반"                    
+category: "NPU"                    
 tags: ["npu", "gpu"]         
 ---
 **NPU(Neural Processing Unit)와 GPU(Graphics Processing Unit)는 모두 병렬 연산을 수행하지만, 최적화된 연산 방식과 사용 목적이 다릅니다.**

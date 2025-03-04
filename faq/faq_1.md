@@ -1,5 +1,5 @@
 ---
-title: "RBLN SDK를 어떻게 사용하나요?"
+title: "RBLN SDK는 어떻게 사용하나요?"
 slug: "how-to-use-rbln-sdk"
 author: "Jiwon"
 createdDate: "2025-03-04"          
