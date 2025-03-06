@@ -1,9 +1,10 @@
 ---
-title: "훈련도 되나요?"
-slug: "training-support"
+title: "How do chameleons change color?"
+slug: "chameleon-color-change"
 author: "Jiwon"
 createdDate: "2025-03-04"
-category: "NPU"
-tags: ["training", "inference", "model training"]
+category: "Reptiles"
+tags: ["chameleons", "color change", "camouflage"]
 ---
-현재로서는 추론만 지원하고 있습니다. 향후 훈련 지원이 되면 공지할 계획입니다.
+Chameleons change color by adjusting specialized skin cells called chromatophores and iridophores. These cells contain different pigments that reflect light, allowing chameleons to blend into their surroundings or communicate emotions.
+---

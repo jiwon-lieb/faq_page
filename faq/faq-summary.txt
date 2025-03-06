@@ -1,18 +1,16 @@
 # FAQ Summary
 ## Maintained by: Jiwon
-## Last Updated: 2025-03-04
+## Last Updated: 2025-03-06
 
 | Category     | Title                                    | Author  | Created Date |
 |-------------|-----------------------------------------|---------|--------------|
-| RBLN SDK | RBLN SDK는 어떻게 사용하나요? | Jiwon | 2025-03-04 |
-| RBLN SDK | 2개 이상의 디바이스를 사용할 때 특정 디바이스를 지정하는 방법이 있나요? | Jiwon | 2025-03-04 |
-| RBLN SDK | C# 모델을 지원하나요? | Jiwon | 2025-03-04 |
-| RBLN SDK | 샘플 코드는 어디에 있나요? | Jiwon | 2025-03-04 |
-| RBLN SDK | 지원하는 모델 종류는 무엇인가요? | Jiwon | 2025-03-04 |
-| 환경설정 | NPU 사용을 위해 CUDA를 설치해야 하나요? | Jiwon | 2025-03-04 |
-| 추론 | NPU 사용량이 낮게 표시되는 이유와 해결 방법 | Jiwon | 2025-03-04 |
-| 추론 | YOLOX를 활용한 비디오 파일(.mp4) 처리 방법 | Jiwon | 2025-03-04 |
-| NPU | 훈련도 되나요? | Jiwon | 2025-03-04 |
-| NPU | REBEL은 무엇인가요? | Jiwon | 2025-03-04 |
-| NPU | NPU와 GPU의 차이점은? | Jiwon | 2025-03-04 |
-| NPU | Fine-tuning 및 추론을 위해 NPU를 어떻게 사용할 수 있나요? | Jiwon | 2025-03-04 |
+| Marine Animals | How do dolphins communicate? | Jiwon | 2025-03-06 |
+| Marine Animals | Do jellyfish have brains? | Jiwon | 2025-03-06 |
+| Marine Animals | Do octopuses have three hearts? | Jiwon | 2025-03-06 |
+| Mammals | How fast can a cheetah run? | Jiwon | 2025-03-06 |
+| Mammals | Why do cats purr? | Jiwon | 2025-03-06 |
+| Mammals | Can elephants recognize themselves in a mirror? | Jiwon | 2025-03-06 |
+| Reptiles | How do chameleons change color? | Jiwon | 2025-03-06 |
+| Reptiles | Can turtles breathe through their butts? | Jiwon | 2025-03-06 |
+| Insects | How do bees make honey? | Jiwon | 2025-03-06 |
+| Birds | Why do penguins waddle? | Jiwon | 2025-03-06 |

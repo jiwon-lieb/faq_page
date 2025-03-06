@@ -1,163 +1,146 @@
 [
   {
-    "category": "RBLN SDK",
+    "category": "Marine Animals",
     "faqs": [
       {
-        "title": "RBLN SDK는 어떻게 사용하나요?",
-        "slug": "rbln-sdk는-어떻게-사용하나요?",
+        "title": "How do dolphins communicate?",
+        "slug": "how-do-dolphins-communicate?",
         "tags": [
-          "installation",
-          "setup"
+          "dolphins",
+          "communication",
+          "echolocation"
         ],
-        "body": "RBLN SDK를 사용하기 위해서는 RBLN 드라이버(driver), 컴파일러(compiler), 모델주(Model Zoo)의 적절한 버전을 설치해야 합니다.\n\n1. RBLN 드라이버를 설치합니다.\n2. RBLN 컴파일러를 설치합니다.\n3. 모델주를 확인하여 원하는 모델이 RBLN SDK로 지원되는지 확인합니다.\n4. 샘플코드를 실행하여 문제가 없는지 확인합니다.\n\n더 자세한 내용은 <a href=\"https://docs.rbln.ai/index.html\" class=\"underline\" target=\"_blank\">SDK Installation Guide</a>에서 확인해주세요.",
+        "body": "Dolphins communicate using a variety of sounds, including whistles, clicks, and body language. They also use echolocation to navigate and find prey by emitting sound waves and interpreting the returning echoes.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
+        "createdDate": "2025-03-06"
       },
       {
-        "title": "2개 이상의 디바이스를 사용할 때 특정 디바이스를 지정하는 방법이 있나요?",
-        "slug": "2개-이상의-디바이스를-사용할-때-특정-디바이스를-지정하는-방법이-있나요?",
+        "title": "Do jellyfish have brains?",
+        "slug": "do-jellyfish-have-brains?",
         "tags": [
-          "multidevice"
+          "jellyfish",
+          "nervous system",
+          "biology"
         ],
-        "body": "NVIDIA GPU와 유사하게 환경변수를 설정하여 특정 디바이스를 지정할 수 있습니다. 올바른 드라이버 및 런타임 설정이 필요하며, 자세한 설정 방법은 <a href=\"https://docs.rbln.ai/ko/software/system_management/device_management.html?h=%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98#_2\" class=\"underline\">공식 가이드</a>를 참고하세요",
+        "body": "No, jellyfish do not have brains. Instead, they have a **nerve net**—a decentralized system that allows them to detect stimuli and move accordingly. Despite lacking a brain, some jellyfish species can exhibit surprisingly complex behaviors.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
+        "createdDate": "2025-03-06"
       },
       {
-        "title": "C# 모델을 지원하나요?",
-        "slug": "c#-모델을-지원하나요?",
+        "title": "Do octopuses have three hearts?",
+        "slug": "do-octopuses-have-three-hearts?",
         "tags": [
-          "C#",
-          "Model Conversion",
-          "NPU Support"
+          "octopus",
+          "hearts",
+          "biology"
         ],
-        "body": "현재 C#으로 컨버팅된 모델을 지원하지 않습니다. 또한, 향후 지원 계획도 아직 수립되지 않았습니다. 따라서, 불편하시더라도 현재 지원되는 파이토치 또는 텐서플로우 모델을 사용하실 것을 권장드립니다.",
+        "body": "Yes! Octopuses have **three hearts**. Two pump blood to the gills, while the third circulates it to the rest of the body. Interestingly, the main heart stops beating when an octopus swims, which is why they prefer crawling to conserve energy.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
-      },
-      {
-        "title": "샘플 코드는 어디에 있나요?",
-        "slug": "샘플-코드는-어디에-있나요?",
-        "tags": [
-          "sample code",
-          "model zoo",
-          "examples"
-        ],
-        "body": "Rebellions Model Zoo provides code examples for different models that you can optimize and test in our RBLN online documentation. You can find the code examples for each model on the following pages under the Task column:\n\n- HuggingFace\n- Pytorch\n- Tensorflow",
-        "author": "Jiwon",
-        "createdDate": "2025-03-04"
-      },
-      {
-        "title": "지원하는 모델 종류는 무엇인가요?",
-        "slug": "지원하는-모델-종류는-무엇인가요?",
-        "tags": [
-          "models",
-          "huggingface"
-        ],
-        "body": "리벨리온은 파이토치(DeepSeek, Llama3.3, Stable Diffusion 등) 및 텐서플로우(Bert, ResNet 등) 레퍼런스 모델을 지원하고 있으며, 지속적으로 업데이트되고 있습니다. 최신 지원 모델 목록은 <a href=\"https://docs.rbln.ai/ko/misc/pytorch_modelzoo.html\" class=\"underline\">모델주</a>에서 확인해보세요.",
-        "author": "Jiwon",
-        "createdDate": "2025-03-04"
-      }
-    ],
-    "author": "Jiwon",
-    "createdDate": "2025-03-04"
-  },
-  {
-    "category": "환경설정",
-    "faqs": [
-      {
-        "title": "NPU 사용을 위해 CUDA를 설치해야 하나요?",
-        "slug": "npu-사용을-위해-cuda를-설치해야-하나요?",
-        "tags": [
-          "GPU",
-          "CUDA",
-          "Installation"
-        ],
-        "body": "리벨리온 NPU를 사용하기 위해 따로 CUDA 환경을 설치하실 필요는 없습니다.",
-        "author": "Jiwon",
-        "createdDate": "2025-03-04"
+        "createdDate": "2025-03-06"
       }
     ]
   },
   {
-    "category": "추론",
+    "category": "Mammals",
     "faqs": [
       {
-        "title": "NPU 사용량이 낮게 표시되는 이유와 해결 방법",
-        "slug": "npu-사용량이-낮게-표시되는-이유와-해결-방법",
+        "title": "How fast can a cheetah run?",
+        "slug": "how-fast-can-a-cheetah-run?",
         "tags": [
-          "NPU",
-          "Utilization",
-          "Optimization"
+          "cheetahs",
+          "speed",
+          "fastest animals"
         ],
-        "body": "연속적인 추론이 필요합니다. 단발성 실행으로는 NPU 사용량이 낮게 보일 수 있으며, input을 지속적으로 밀어넣어야 활용률을 높일 수 있습니다.",
+        "body": "Cheetahs are the **fastest land animals**, reaching speeds of up to **75 mph (120 km/h)** in short bursts. They use their **long tails** for balance and can accelerate from **0 to 60 mph in just 3 seconds**.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
+        "createdDate": "2025-03-06"
       },
       {
-        "title": "YOLOX를 활용한 비디오 파일(.mp4) 처리 방법",
-        "slug": "yolox를-활용한-비디오-파일(.mp4)-처리-방법",
+        "title": "Why do cats purr?",
+        "slug": "why-do-cats-purr?",
         "tags": [
-          "Video Processing",
-          "YOLOX",
-          "Image Detection"
+          "cats",
+          "purring",
+          "behavior"
         ],
-        "body": "비디오 파일(.mp4)을 활용하여 YOLOX 모델을 사용하기 위해서는 추론을 실행하기 전에 OpenCV(`cv2`)와 같은 라이브러리를 사용하여 비디오의 각 프레임을 이미지로 변환해야 합니다. 변환된 프레임을 YOLOX 모델에 입력하면 실시간 객체 탐지가 가능합니다.",
+        "body": "Cats purr for various reasons, including relaxation, communication with their owners, and even self-healing. Studies suggest that the vibrations produced during purring can promote bone healing and reduce stress.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
+        "createdDate": "2025-03-06"
+      },
+      {
+        "title": "Can elephants recognize themselves in a mirror?",
+        "slug": "can-elephants-recognize-themselves-in-a-mirror?",
+        "tags": [
+          "elephants",
+          "intelligence",
+          "self-awareness"
+        ],
+        "body": "Yes! Elephants have demonstrated **self-awareness** by recognizing themselves in mirrors. This ability is rare in the animal kingdom and suggests a high level of intelligence, comparable to dolphins and great apes.\n---",
+        "author": "Jiwon",
+        "createdDate": "2025-03-06"
       }
     ]
   },
   {
-    "category": "NPU",
+    "category": "Reptiles",
     "faqs": [
       {
-        "title": "훈련도 되나요?",
-        "slug": "훈련도-되나요?",
+        "title": "How do chameleons change color?",
+        "slug": "how-do-chameleons-change-color?",
         "tags": [
-          "training",
-          "inference",
-          "model training"
+          "chameleons",
+          "color change",
+          "camouflage"
         ],
-        "body": "현재로서는 추론만 지원하고 있습니다. 향후 훈련 지원이 되면 공지할 계획입니다.",
+        "body": "Chameleons change color by adjusting specialized skin cells called chromatophores and iridophores. These cells contain different pigments that reflect light, allowing chameleons to blend into their surroundings or communicate emotions.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
+        "createdDate": "2025-03-06"
       },
       {
-        "title": "REBEL은 무엇인가요?",
-        "slug": "rebel은-무엇인가요?",
+        "title": "Can turtles breathe through their butts?",
+        "slug": "can-turtles-breathe-through-their-butts?",
         "tags": [
-          "REBEL",
-          "chiplet",
-          "NPU",
-          "hardware"
+          "turtles",
+          "breathing",
+          "adaptation"
         ],
-        "body": "리벨리온에서 개발 중인 칩렛 구조의 AI 추론용 NPU로, 근시일 내 출시 예정입니다.",
+        "body": "Yes! Some turtles, like the Australian **Fitzroy River turtle**, can absorb oxygen through their **cloaca** (a multi-purpose opening near their tail). This allows them to stay underwater for long periods without coming up for air.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
-      },
+        "createdDate": "2025-03-06"
+      }
+    ]
+  },
+  {
+    "category": "Insects",
+    "faqs": [
       {
-        "title": "NPU와 GPU의 차이점은?",
-        "slug": "npu와-gpu의-차이점은?",
+        "title": "How do bees make honey?",
+        "slug": "how-do-bees-make-honey?",
         "tags": [
-          "npu",
-          "gpu"
+          "bees",
+          "honey",
+          "pollination"
         ],
-        "body": "NPU(Neural Processing Unit)와 GPU(Graphics Processing Unit)는 모두 병렬 연산을 수행하지만, 최적화된 연산 방식과 사용 목적이 다릅니다.\n\nGPU는 원래 그래픽 렌더링을 위해 설계되었지만, 대규모 병렬 연산이 가능해 AI 학습(training)과 고성능 컴퓨팅(HPC)에 활용됩니다. 일반적으로 FP32/FP16 연산을 사용하며, CUDA 코어 및 Tensor 코어를 포함하여 다양한 연산을 지원합니다.\nNPU는 AI/딥러닝 추론(inference)에 특화된 프로세서로, 저전력에서 효율적인 연산을 수행하도록 설계되었습니다. INT8, FP16과 같은 저비트 연산을 최적화하며, 신경망 연산을 가속하는 전용 하드웨어 구조를 가집니다.",
+        "body": "Bees collect nectar from flowers and store it in their honey stomach. Once back at the hive, they pass the nectar to worker bees, who break down the sugars and remove moisture by fanning their wings. The final product is honey, which is stored in hexagonal wax cells.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
-      },
+        "createdDate": "2025-03-06"
+      }
+    ]
+  },
+  {
+    "category": "Birds",
+    "faqs": [
       {
-        "title": "Fine-tuning 및 추론을 위해 NPU를 어떻게 사용할 수 있나요?",
-        "slug": "fine-tuning-및-추론을-위해-npu를-어떻게-사용할-수-있나요?",
+        "title": "Why do penguins waddle?",
+        "slug": "why-do-penguins-waddle?",
         "tags": [
-          "Fine-tuning",
-          "Inference",
-          "Training"
+          "penguins",
+          "walking",
+          "balance"
         ],
-        "body": "파인 튜닝(Fine-tuning)은 주로 GPU 또는 CPU에서 수행해야 하며, NPU는 주로 추론(Inference) 용도로 사용됩니다. 파인튜닝이 완료된 모델은 ATOM™을 통해 최적화된 방식으로 추론할 수 있습니다.\n자세한 내용은 <a href=\"https://docs.rbln.ai/getting_started/tutorials.html\" class=\"underline\">튜토리얼</a>를 참고하세요.",
+        "body": "Penguins waddle because of their **short legs and upright posture**. This movement helps conserve energy while walking on land. Scientists have found that waddling is actually an efficient way for penguins to move, despite its awkward appearance.\n---",
         "author": "Jiwon",
-        "createdDate": "2025-03-04"
+        "createdDate": "2025-03-06"
       }
     ]
   }

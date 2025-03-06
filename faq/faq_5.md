@@ -1,9 +1,10 @@
 ---
-title: "REBEL은 무엇인가요?"
-slug: "what-is-rebel"
+title: "Do octopuses have three hearts?"
+slug: "octopus-hearts"
 author: "Jiwon"
 createdDate: "2025-03-04"
-category: "NPU"
-tags: ["REBEL", "chiplet", "NPU", "hardware"]
+category: "Marine Animals"
+tags: ["octopus", "hearts", "biology"]
 ---
-리벨리온에서 개발 중인 칩렛 구조의 AI 추론용 NPU로, 근시일 내 출시 예정입니다.
+Yes! Octopuses have **three hearts**. Two pump blood to the gills, while the third circulates it to the rest of the body. Interestingly, the main heart stops beating when an octopus swims, which is why they prefer crawling to conserve energy.
+---

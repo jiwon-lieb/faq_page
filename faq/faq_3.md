@@ -1,13 +1,10 @@
 ---
-title: "샘플 코드는 어디에 있나요?"
-slug: "sample-code"
+title: "Why do cats purr?"
+slug: "cat-purring"
 author: "Jiwon"
 createdDate: "2025-03-04"
-category: "RBLN SDK"
-tags: ["sample code", "model zoo", "examples"]
+category: "Mammals"
+tags: ["cats", "purring", "behavior"]
 ---
-Rebellions Model Zoo provides code examples for different models that you can optimize and test in our RBLN online documentation. You can find the code examples for each model on the following pages under the Task column:
-
-- HuggingFace
-- Pytorch
-- Tensorflow
+Cats purr for various reasons, including relaxation, communication with their owners, and even self-healing. Studies suggest that the vibrations produced during purring can promote bone healing and reduce stress.
+---
