@@ -16,7 +16,7 @@
     }
 
     body {
-      font-family: 'Pretendard', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background-color: #EFF2F5;
       display: flex;
       flex-direction: column;
@@ -109,8 +109,7 @@
       bottom: 0;
       width: 100%;
       text-align: center;
-      background: #3B434B;
-      color: white;
+      color: #3B434B;
       padding: 15px 0;
     }
 
@@ -161,12 +160,12 @@
 
   <!-- Search Container -->
   <div class="container w-full max-w-3xl min-w-[1000px] mx-auto text-center mt-[120px] p-6 bg-white shadow-lg rounded-xl min-h-[auto] mb-32 flex flex-col justify-start">
-    <h1 class="search-title mb-6 ">🔍 검색 결과</h1>
+    <h1 class="search-title mb-6 ">Search Result</h1>
     <div id="results" class="max-w-md w-full mx-auto bg-white rounded-md p-4 border-gray-400"></div>
     <!-- Search Again Bar -->
     <div class="search-box flex justify-center items-center space-x-2 min-w-[300px] gap-2 mt-5">
       <input type="text" 
-             placeholder="검색어를 입력하세요" 
+             placeholder="Enter a search word" 
              class="px-4 py-3 border border-gray-400 rounded-full shadow-sm focus:ring focus:ring-gray-300" 
              id="searchAgainInput"
       >
@@ -178,23 +177,19 @@
   <!-- Fixed Footer -->
   <footer class="left-0 w-full text-center text-white p-4">
     <p class="text-sm">
-      📍 <a href="https://maps.app.goo.gl/dEBLsvBE2L9BrmWEA" target="_blank" class="underline">
-        경기도 성남시 분당구 정자동 9번지 102동 801호
+      📍 <a href="#" target="_blank" class="underline">
+        Made with ❤️ by Baddie Jiwon
       </a>
     </p>
     <p class="text-sm">
-      <a href="mailto:contact@rebellions.ai" class="underline">📧 contact@rebellions.ai</a>
+      <a href="mailto:contact@jiwonkwak.co" class="underline">contact@jiwonkwak.co</a>
     </p>
     <div class="mt-2 flex justify-center space-x-6 items-center">
-      <a href="https://rebellions.ai" target="_blank" class="hover:text-gray-300">Website</a>
+      <a href="https://jiwonkwak.co" target="_blank" class="hover:text-gray-300">Website</a>
       <a href="https://www.linkedin.com/company/rebellions-ai" target="_blank"
         class="hover:text-gray-300 flex items-center space-x-1">
         <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/linkedin.svg" alt="LinkedIn" class="h-5 w-5">
         <span>LinkedIn</span>
-      </a>
-      <a href="https://x.com/RebellionsAI" target="_blank" class="hover:text-gray-300 flex items-center space-x-1">
-        <img src="/assets/X.svg" alt="X" class="h-5 w-5">
-        <span>Twitter</span>
       </a>
     </div>
   </footer>
@@ -219,7 +214,7 @@
       const searchTitle = document.querySelector(".search-title");
 
       if (query) {
-        searchTitle.innerHTML = `🔍 "<span class="text-red-500">${query}</span>" 검색 결과`;
+        searchTitle.innerHTML = `"<span class="text-red-500">${query}</span>"Search Result`;
       }
 
       if (!query) {
