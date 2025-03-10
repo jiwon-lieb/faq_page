@@ -75,7 +75,43 @@
       </a>
     </header>
 
-    <div class="main-container flex flex-col text-center p-10 bg-gradient-to-br from-[#A9E4DE] via-[#D0EDEF] to-[#F7E4A9] shadow-xl rounded-2xl border-2 border-[#83B8C6] w-full max-w-[1000px] mt-[120px] mb-[100px] relative">
+    <div x-data="{
+      openForms: [],
+      searchTextInput: new URLSearchParams(window.location.search).get('query') || '',
+      searchQuery: new URLSearchParams(window.location.search).get('query') || '',
+      searchResults: [],
+      searchTriggered: false, /* New flag to track search initiation */
+      performSearch: async function() {
+        this.searchTriggered = true; /* Set flag when search is triggered */
+        const query = this.searchTextInput.trim().toLowerCase();
+        this.searchQuery = query;
+        this.searchResults = [];
+        if (!query) {
+          return;
+        }
+        try {
+          const response = await fetch('/faq.json');
+          if (!response.ok) throw new Error('Network response was not ok');
+          const faqData = await response.json();
+          let matches = [];
+          faqData.forEach(category => {
+            category.faqs.forEach(faq => {
+              if (
+                faq.title.toLowerCase().includes(query) || 
+                faq.body.toLowerCase().includes(query)
+              ) {
+                matches.push({ category: category.category, title: faq.title, body: faq.body });
+              }
+            });
+          });
+          this.searchResults = matches;
+          console.log('Search results:', matches);
+        } catch (error) {
+          console.error('Error fetching FAQs:', error);
+          this.searchResults = [];
+        }
+      }
+    }" class="main-container flex flex-col text-center p-10 bg-gradient-to-br from-[#A9E4DE] via-[#D0EDEF] to-[#F7E4A9] shadow-xl rounded-2xl border-2 border-[#83B8C6] w-full max-w-[1000px] mt-[120px] mb-[100px] relative">
       <img src="/assets/logo.png" alt="Black Logo" class="h-6 mb-4 mx-auto">
       <h1 class="text-4xl font-extrabold text-[#3B434B] mb-2 mt-4">
         Search Results
@@ -83,43 +119,9 @@
       <div x-show="searchTriggered && searchQuery && searchResults.length > 0" class="text-lg text-[#3B434B] mb-6">
         Search Results for "<span x-text="searchQuery"></span>"
       </div>
-      <form x-data="{
-        openForms: [],
-        searchQuery: new URLSearchParams(window.location.search).get('query') || '',
-        searchResults: [],
-        searchTriggered: false, /* New flag to track search initiation */
-        performSearch: async function() {
-          this.searchTriggered = true; /* Set flag when search is triggered */
-          const query = this.searchQuery.trim().toLowerCase();
-          this.searchResults = [];
-          if (!query) {
-            return;
-          }
-          try {
-            const response = await fetch('/faq.json');
-            if (!response.ok) throw new Error('Network response was not ok');
-            const faqData = await response.json();
-            let matches = [];
-            faqData.forEach(category => {
-              category.faqs.forEach(faq => {
-                if (
-                  faq.title.toLowerCase().includes(query) || 
-                  faq.body.toLowerCase().includes(query)
-                ) {
-                  matches.push({ category: category.category, title: faq.title, body: faq.body });
-                }
-              });
-            });
-            this.searchResults = matches;
-            console.log('Search results:', matches);
-          } catch (error) {
-            console.error('Error fetching FAQs:', error);
-            this.searchResults = [];
-          }
-        }
-      }" x-on:submit.prevent="performSearch" x-init="if (searchQuery) performSearch()" x-on:keyup.enter="performSearch" class="w-full text-center">
+      <form x-on:submit.prevent="performSearch" x-init="if (searchQuery) performSearch()" x-on:keyup.enter="performSearch" class="w-full text-center">
         <div class="ml-6 flex items-center bg-[#D0EDEF] rounded-full shadow-sm border border-[#83B8C6] overflow-hidden">
-          <input autocomplete="off" x-model="searchQuery" type="text" id="searchQuery" placeholder="Search"
+          <input autocomplete="off" x-model="searchTextInput" type="text" id="searchText" placeholder="Search"
             class="text-sm text-center min-w-0 px-3 py-2 bg-transparent focus:outline-none w-full"
             x-on:keyup.enter="performSearch">
           <button type="submit" x-on:click="performSearch" class="p-3 bg-[#F3D17C] hover:bg-[#E0C06F] transition-all flex-shrink-0 flex items-center justify-center">
