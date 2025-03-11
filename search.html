@@ -80,9 +80,15 @@
         const query = this.searchTextInput.trim().toLowerCase();
         this.searchQuery = query;
         this.searchResults = [];
+
         if (!query) {
           return;
         }
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('query', query);
+        window.history.replaceState({}, '', url); 
+
         try {
           const response = await fetch('/faq.json');
           if (!response.ok) throw new Error('Network response was not ok');
