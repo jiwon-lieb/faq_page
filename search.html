@@ -79,7 +79,6 @@
         this.searchTriggered = true; /* Set flag when search is triggered */
         const query = this.searchTextInput.trim().toLowerCase();
         this.searchQuery = query;
-        this.searchResults = [];
 
         if (!query) {
           return;
@@ -116,7 +115,7 @@
       <h1 class="text-4xl font-extrabold text-[#3B434B] mb-2 mt-4">
         Search Results
       </h1>
-      <div x-show="searchTriggered && searchQuery && searchResults.length > 0" class="text-lg text-[#3B434B] mb-6">
+      <div x-show="searchTriggered && searchQuery && searchResults.length > 0" x-transition.opacity.duration.200ms class="text-lg text-[#3B434B] mb-6">
         Search Results for "<span x-text="searchQuery"></span>"
       </div>
       <form x-on:submit.prevent="performSearch" x-init="if (searchQuery) performSearch()" x-on:keyup.enter="performSearch" class="w-full text-center">
