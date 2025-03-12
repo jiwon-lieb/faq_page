@@ -1,6 +1,6 @@
-# Rebellions Customer Support Site
+# FAQCustomer Support Site
 
-🚀 **Rebellions 고객지원 FAQ 웹사이트**  
+🚀 ** 고객지원 FAQ 웹사이트**  
 Eleventy를 사용한 고객지원 FAQ 웹사이트입니다.  
 아래의 가이드라인에 따라 **Markdown 파일을 작성**하고, **링크 및 명령어 사용 규칙**을 준수해 주세요.
 
@@ -69,10 +69,6 @@ yarn add @tailwindcss/typography
 ```sh
 yarn exec eleventy -- --serve
 ```
-아니면 아래 명령어도 괜찮습니다.
-```sh
-yarn pi-serve
-```
 기본적으로 빌드된 결과는 `_site` 폴더에 생성됩니다.  
 브라우저에서 [http://localhost:8080](http://localhost:8080)으로 접속하여 확인할 수 있습니다.
 
@@ -87,18 +83,18 @@ yarn pi-serve
 - **Markdown 파일 템플릿 예시 (필수 Frontmatter 포함):**
 ```md
 ---
-title: "RBLN SDK를 어떻게 사용하나요?"
-category: "RBLN SDK"
-author: "Jiwon"
-createdDate: "2025-03-04"
-tags: ["installation", "setup"]
+title:
+category:
+author:
+createdDate: ""
+tags: ["", ""]
 ---
 
 RBLN SDK를 사용하기 위해서는...
 ```
 - **Frontmatter에 `title`, `category`, `author`, `createdDate`를 반드시 포함해야 합니다.**  
 - 링크는 `<a href="..." class="underline">링크 텍스트</a>` 형식으로 작성합니다.  
-- Mailto는 `<a href="mailto:support@rebellions.ai" class="underline">Technical Support Team</a>` 형식으로 작성합니다.  
+- Mailto는 `<a href="mailto:contact@jiwonkwak.co" class="underline">Technical Support Team</a>` 형식으로 작성합니다.  
 
 ---
 
