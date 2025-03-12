@@ -1,6 +1,5 @@
 # FAQCustomer Support Site
 
-🚀 ** 고객지원 FAQ 웹사이트**  
 Eleventy를 사용한 고객지원 FAQ 웹사이트입니다.  
 아래의 가이드라인에 따라 **Markdown 파일을 작성**하고, **링크 및 명령어 사용 규칙**을 준수해 주세요.
 
