@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "baddie": "npx @tailwindcss/cli -i ./static/style.css -o ./style.css",
-    "update-faq": "node generate_faq.js",
-    "pi-serve": "yarn exec eleventy -- --serve"
+    "build": "yarn update && yarn exec eleventy",
+    "update": "node generate_faq.js",
+    "start": "yarn exec eleventy -- --serve"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",

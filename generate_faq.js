@@ -52,6 +52,7 @@ faqFiles.forEach(file => {
     const category = parsed.data.category || "Uncategorized"; // Default category
     const tags = parsed.data.tags || []; // Tags from front matter
     const body = parsed.content.trim(); // Extract markdown body
+    const htmlBody = marked.parse(body);
 
     existingTitles.add(title); // Store title as existing
 
@@ -72,18 +73,20 @@ faqFiles.forEach(file => {
     if (existingFAQ) {
         // **Update existing FAQ**
         existingFAQ.tags = tags;
-        existingFAQ.body = body;
+        existingFAQ.body = htmlBody;
         existingFAQ.author = defaultAuthor;
         existingFAQ.createdDate = today;
+        existingFAQ.fileName = file;
     } else {
         // **Add new FAQ if it doesn't exist**
         categoryEntry.faqs.push({
             title: title,
             slug: title.toLowerCase().replace(/\s+/g, "-"),
             tags: tags,
-            body: body,
+            body: htmlBody,
             author: defaultAuthor,
-            createdDate: today
+            createdDate: today,
+            fileName: file
         });
     }
 
@@ -113,13 +116,13 @@ let markdownContent = `# FAQ Summary
 ## Maintained by: Jiwon
 ## Last Updated: ${today}
 
-| Category     | Title                                    | Author  | Created Date |
-|-------------|-----------------------------------------|---------|--------------|
+| File Name       | Category     | Title                                    | Author  | Created Date |
+|----------------|-------------|-----------------------------------------|---------|--------------|
 `;
 
 faqCategories.forEach(category => {
     category.faqs.forEach(faq => {
-        markdownContent += `| ${category.category} | ${faq.title} | ${faq.author} | ${faq.createdDate} |\n`;
+        markdownContent += `| ${faq.fileName} | ${category.category} | ${faq.title} | ${faq.author} | ${faq.createdDate} |\n`;
     });
 });
 

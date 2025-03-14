@@ -7,4 +7,3 @@ category: "Mammals"
 tags: ["elephants", "intelligence", "self-awareness"]
 ---
 Yes! Elephants have demonstrated **self-awareness** by recognizing themselves in mirrors. This ability is rare in the animal kingdom and suggests a high level of intelligence, comparable to dolphins and great apes.
----
