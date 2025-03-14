@@ -52,7 +52,9 @@ faqFiles.forEach(file => {
     const category = parsed.data.category || "Uncategorized"; // Default category
     const tags = parsed.data.tags || []; // Tags from front matter
     const body = parsed.content.trim(); // Extract markdown body
-    const htmlBody = marked.parse(body);
+
+    const cleanedBody = body.replace(/^#+ /gm, "");
+    const htmlBody = marked.parseInline(cleanedBody);
 
     existingTitles.add(title); // Store title as existing
 

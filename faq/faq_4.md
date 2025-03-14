@@ -7,4 +7,3 @@ category: "Reptiles"
 tags: ["chameleons", "color change", "camouflage"]
 ---
 Chameleons change color by adjusting specialized skin cells called chromatophores and iridophores. These cells contain different pigments that reflect light, allowing chameleons to blend into their surroundings or communicate emotions.
----
